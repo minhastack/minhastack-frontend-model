@@ -6,39 +6,25 @@ import 'firebase/compat/auth';
 import AppHandler from './AppHandler';
 import Header from './templates/Header';
 
-// Configure Firebase.
-const firebaseConfig = {
-  apiKey: "AIzaSyCsqclIDr5LcG_63e_htcsVgwMyjBeL4mM",
-  authDomain: "minhastack-7ffca.firebaseapp.com",
-  projectId: "minhastack-7ffca",
-  storageBucket: "minhastack-7ffca.appspot.com",
-  messagingSenderId: "437617252334",
-  appId: "1:437617252334:web:a6c61ff4fd2193ac17e0ff",
-  measurementId: "G-2WXWZ0NYL4"
-};
+import firebaseConfig from '../config/firebaseConfig'
 
 firebase.initializeApp(firebaseConfig);
 
-// Configure FirebaseUI.
 const uiConfig = {
-  // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
-  // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
   callbacks: {
-    // Avoid redirects after sign-in.
     signInSuccessWithAuthResult: () => false,
   },
 };
 
 function SignInScreen() {
   const [isAuthLoading, setAuthLoading] = useState(true)
-  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [authToken, setAuthToken] = useState(false);
 
-  // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       if(!user){
