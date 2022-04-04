@@ -6,7 +6,7 @@ import 'firebase/compat/auth';
 import AppHandler from './AppHandler';
 import Header from './templates/Header';
 
-import firebaseConfig from '../config/firebaseConfig'
+import firebaseConfig from './config/firebaseConfig'
 
 firebase.initializeApp(firebaseConfig);
 

@@ -9,9 +9,6 @@ import {
 import Header from './templates/Header';
 
 import Home from './modules/Home';
-import Opportunities from './modules/Opportunities';
-import Vendas from './modules/Vendas';
-import Events from './modules/Events';
 
 export default function AppHandler ({
     auth,
@@ -23,9 +20,6 @@ export default function AppHandler ({
                 <Header auth={auth} authToken={authToken} />
                 <Routes>
                     <Route path="/" element={<Home auth={auth} authToken={authToken}  />} />
-                    <Route path="/opportunities" element={<Opportunities auth={auth} authToken={authToken}  />} />
-                    <Route path="/vendas" element={<Vendas auth={auth} authToken={authToken}  />} />
-                    <Route path="/events" element={<Events auth={auth} authToken={authToken}  />} />
                 </Routes>
             </div>
         </HashRouter>
